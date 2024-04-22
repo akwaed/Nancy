@@ -27,39 +27,44 @@ protected:
 class Recliner : public Furniture
 {
 public:
-    Recliner(string name, string color, int maxRecliningPosition);
-    void setMaxRecliningPosition(int maxRecliningPosition);
-    int getMaxRecliningPosition();
+    Recliner(string name, string color, float maxRecliningPosition);
+    void setMaxRecliningPosition(float maxRecliningPosition);
+    float getMaxRecliningPosition();
     void print() override;
 
 private:
-    int maxRecliningPosition;
+    float maxRecliningPosition;
 };
 
 class Bed : public Furniture
 {
 public:
-    Bed(string name, string color, int width, int length);
-    void setWidth(int width);
+    Bed(string name, string color, float width, float length);
+    void setWidth(float width);
     void setLength(int length);
-    int getWidth();
-    int getLength();
+    float getWidth();
+    float getLength();
     void print() override;
 
 private:
-    int width;
-    int length;
+    float width;
+    float length;
 };
 
 Furniture::Furniture(string name, string color) : name(name), color(color) {}
 
-Recliner::Recliner(string name, string color, int maxRecliningPosition) : Furniture(name, color), maxRecliningPosition(maxRecliningPosition) {}
+Recliner::Recliner(string name, string color, float maxRecliningPosition) : Furniture(name, color), maxRecliningPosition(maxRecliningPosition) {}
 
-Bed::Bed(string name, string color, int width, int length) : Furniture(name, color), width(width), length(length) {}
+Bed::Bed(string name, string color, float width, float length) : Furniture(name, color), width(width), length(length) {}
 
 void Recliner::print() {
     cout << "Name=" << name << ",Color=" << color << ",Position=" << maxRecliningPosition << endl;
 }
+
+// to print recliner without the color
+// void Recliner::print() {
+//     cout << "Name=" << name << ",Position=" << maxRecliningPosition << endl;
+// }
 
 void Bed::print() {
     cout << "Name=" << name << ",Color=" << color << ", Length=" << length << ",Width=" << length << endl;
