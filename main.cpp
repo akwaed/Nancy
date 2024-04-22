@@ -12,7 +12,10 @@ public:
     void setColor(string color);
     string getName();
     string getColor();
-    virtual void print() = 0;
+    // virtual print to display the name and color of the furniture
+    virtual void print() {
+        cout << "Name=" << name << ",Color=" << color << endl;};
+
 
 
 protected:
@@ -55,24 +58,28 @@ Recliner::Recliner(string name, string color, int maxRecliningPosition) : Furnit
 Bed::Bed(string name, string color, int width, int length) : Furniture(name, color), width(width), length(length) {}
 
 void Recliner::print() {
-    cout << "Recliner: Name - " << name << ", Color - " << color << ", Max Reclining Position - " << maxRecliningPosition << endl;
+    cout << "Name=" << name << ",Color=" << color << ",Position=" << maxRecliningPosition << endl;
 }
 
 void Bed::print() {
-    cout << "Bed: Name - " << name << ", Color - " << color << ", Width - " << width << ", Length - " << length << endl;
+    cout << "Name=" << name << ",Color=" << color << ", Length=" << length << ",Width=" << length << endl;
 }
+
+
+
 
 int main() {
     Furniture* furniture[3];
     
-    furniture[0] = new Recliner("Recliner", "Black", 5);
-    furniture[1] = new Bed("Bed", "White", 100, 200);
+    furniture[0] = new Furniture("Generic Piece", "Brown");
+    furniture[1] = new Recliner("Recliner", "Black", 45.5);
+    furniture[2] = new Bed("Bed", "White", 75.9, 36.5);
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
         furniture[i]->print();
     }
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
         delete furniture[i];
     }
 
